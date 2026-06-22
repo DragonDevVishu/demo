@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BusinessAutomater — AI Automation for Dental Clinics</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --ink: #0f1117; --ink-soft: #4a4f5e; --bg: #f7f6f2; --white: #ffffff;
+    --accent: #1a6b4a; --accent-light: #e8f4ee; --border: #e2e0da; --radius: 12px;
+  }
+  body { font-family: "Inter", sans-serif; background: var(--bg); color: var(--ink); line-height: 1.6; }
+  nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 48px; background: var(--white); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+  .logo { font-family: "DM Serif Display", serif; font-size: 1.3rem; color: var(--ink); letter-spacing: -0.02em; }
+  .logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { text-decoration: none; color: var(--ink-soft); font-size: 0.9rem; font-weight: 500; }
+  .hero { max-width: 860px; margin: 0 auto; padding: 96px 24px 80px; text-align: center; }
+  .hero-tag { display: inline-block; background: var(--accent-light); color: var(--accent); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 6px 14px; border-radius: 100px; margin-bottom: 24px; }
+  h1 { font-family: "DM Serif Display", serif; font-size: clamp(2.4rem, 5vw, 3.6rem); line-height: 1.12; letter-spacing: -0.03em; margin-bottom: 20px; }
+  h1 em { font-style: italic; color: var(--accent); }
+  .hero p { font-size: 1.1rem; color: var(--ink-soft); max-width: 580px; margin: 0 auto; }
+  .markets { background: var(--ink); padding: 18px 48px; display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; }
+  .market { color: #8a8f9e; font-size: 0.82rem; font-weight: 500; display: flex; align-items: center; gap: 8px; }
+  .market strong { color: var(--white); }
+  .stats { background: var(--accent); padding: 32px 48px; display: flex; justify-content: center; gap: 64px; flex-wrap: wrap; }
+  .stat { text-align: center; }
+  .stat-num { font-family: "DM Serif Display", serif; font-size: 2rem; color: var(--white); display: block; }
+  .stat-label { color: #b2d8c5; font-size: 0.82rem; }
+  section { padding: 80px 24px; }
+  .container { max-width: 1080px; margin: 0 auto; }
+  .section-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+  h2 { font-family: "DM Serif Display", serif; font-size: clamp(1.8rem, 3vw, 2.6rem); letter-spacing: -0.025em; line-height: 1.2; margin-bottom: 16px; }
+  .section-sub { color: var(--ink-soft); font-size: 1rem; max-width: 520px; margin-bottom: 48px; }
+  .how-bg { background: var(--white); }
+  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 32px; }
+  .step { padding: 28px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg); }
+  .step-num { font-family: "DM Serif Display", serif; font-size: 2.4rem; color: var(--accent-light); line-height: 1; margin-bottom: 12px; }
+  .step h3 { font-size: 1rem; font-weight: 600; margin-bottom: 8px; }
+  .step p { font-size: 0.88rem; color: var(--ink-soft); }
+  .channel-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  @media (max-width: 700px) { .channel-grid { grid-template-columns: 1fr; } }
+  .channel-card { border-radius: var(--radius); padding: 32px; border: 1px solid var(--border); }
+  .channel-card.whatsapp { background: #e8f5e9; border-color: #c8e6c9; }
+  .channel-card.voice { background: #e8f0fb; border-color: #c5d5f5; }
+  .channel-icon { font-size: 1.8rem; margin-bottom: 16px; }
+  .channel-card h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 6px; }
+  .channel-card .sub { font-size: 0.82rem; color: var(--ink-soft); margin-bottom: 20px; }
+  .feature-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .feature-list li { font-size: 0.88rem; color: var(--ink); display: flex; gap: 10px; align-items: flex-start; }
+  .feature-list li::before { content: "✓"; color: var(--accent); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+  .pricing-bg { background: var(--white); }
+  .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
+  .plan { border: 1px solid var(--border); border-radius: var(--radius); padding: 32px; background: var(--bg); display: flex; flex-direction: column; }
+  .plan.featured { background: var(--ink); border-color: var(--ink); color: var(--white); }
+  .plan.custom { background: var(--accent-light); border-color: #b2d8c5; }
+  .plan-name { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 12px; color: var(--ink-soft); }
+  .plan.featured .plan-name { color: #8a8f9e; }
+  .plan.custom .plan-name { color: var(--accent); }
+  .plan-price { font-family: "DM Serif Display", serif; font-size: 2.2rem; line-height: 1; margin-bottom: 2px; }
+  .plan-aed { font-size: 0.82rem; color: var(--ink-soft); margin-bottom: 4px; }
+  .plan.featured .plan-aed { color: #8a8f9e; }
+  .plan-cycle { font-size: 0.82rem; color: var(--ink-soft); margin-bottom: 24px; }
+  .plan.featured .plan-cycle { color: #8a8f9e; }
+  .plan-features { list-style: none; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+  .plan-features li { font-size: 0.88rem; display: flex; gap: 8px; }
+  .plan-features li::before { content: "✓"; color: var(--accent); font-weight: 700; }
+  .plan.featured .plan-features li::before { color: #6fcf97; }
+  .plan-note { margin-top: 20px; font-size: 0.8rem; color: var(--ink-soft); font-style: italic; }
+  .plan.featured .plan-note { color: #8a8f9e; }
+  .plan.custom .plan-note { color: var(--accent); }
+  .policy-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  @media (max-width: 600px) { .policy-grid { grid-template-columns: 1fr; } }
+  .policy-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; }
+  .policy-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 12px; }
+  .policy-card p { font-size: 0.88rem; color: var(--ink-soft); line-height: 1.7; }
+  .contact-bg { background: var(--ink); color: var(--white); }
+  .contact-bg h2 { color: var(--white); }
+  .contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  @media (max-width: 640px) { .contact-wrap { grid-template-columns: 1fr; } }
+  .contact-info p { color: #8a8f9e; font-size: 0.95rem; margin-bottom: 32px; line-height: 1.7; }
+  .contact-detail { display: flex; flex-direction: column; gap: 16px; }
+  .contact-item { font-size: 0.9rem; color: #c0c5d0; display: flex; gap: 12px; align-items: center; }
+  .contact-box { background: #1c2030; border-radius: var(--radius); padding: 32px; display: flex; flex-direction: column; gap: 12px; }
+  .contact-row { background: #252a3a; border-radius: 8px; padding: 16px; border-left: 3px solid #6fcf97; }
+  .contact-row-label { font-size: 0.72rem; color: #8a8f9e; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; }
+  .contact-row-val { color: var(--white); font-size: 0.95rem; }
+  footer { background: #080b12; color: #4a4f5e; text-align: center; padding: 24px; font-size: 0.82rem; }
+  @media (max-width: 600px) { nav { padding: 16px 20px; } .nav-links { gap: 16px; } .stats, .markets { gap: 20px; padding: 20px; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Business<span>Automater</span></div>
+  <div class="nav-links">
+    <a href="#features">Features</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-tag">AI Automation for Dental Clinics</div>
+  <h1>Your front desk,<br><em>working 24/7</em></h1>
+  <p>AI-powered WhatsApp and voice bots that handle appointment bookings, patient queries, and after-hours calls — built for dental clinics in the UAE, USA, UK, Canada, and Australia.</p>
+</div>
+
+<div class="markets">
+  <div class="market">&#127462;&#127466; <strong>Dubai &amp; Abu Dhabi</strong></div>
+  <div class="market">&#127482;&#127480; <strong>United States</strong></div>
+  <div class="market">&#127468;&#127463; <strong>United Kingdom</strong></div>
+  <div class="market">&#127464;&#127462; <strong>Canada</strong></div>
+  <div class="market">&#127462;&#127482; <strong>Australia</strong></div>
+</div>
+
+<div class="stats">
+  <div class="stat"><span class="stat-num">24/7</span><span class="stat-label">Availability</span></div>
+  <div class="stat"><span class="stat-num">0</span><span class="stat-label">Missed after-hours calls</span></div>
+  <div class="stat"><span class="stat-num">2 min</span><span class="stat-label">Average booking time</span></div>
+  <div class="stat"><span class="stat-num">WhatsApp + Voice</span><span class="stat-label">Dual channel</span></div>
+</div>
+
+<section class="how-bg">
+  <div class="container">
+    <div class="section-label">How It Works</div>
+    <h2>Up and running in days,<br>not months</h2>
+    <p class="section-sub">We handle the entire setup. Your team just starts receiving fewer interruptions.</p>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><h3>Share Your Clinic Details</h3><p>Tell us your hours, services, FAQs, and booking workflow. We configure the bot to match your clinic exactly.</p></div>
+      <div class="step"><div class="step-num">2</div><h3>We Build &amp; Integrate</h3><p>Your WhatsApp business number and phone line are connected to the AI. No technical work needed from your side.</p></div>
+      <div class="step"><div class="step-num">3</div><h3>Go Live</h3><p>The bot starts handling messages and calls. You get full logs, summaries, and escalation alerts.</p></div>
+      <div class="step"><div class="step-num">4</div><h3>Ongoing Refinement</h3><p>We monitor performance and improve responses based on real patient interactions every month.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="features">
+  <div class="container">
+    <div class="section-label">Features</div>
+    <h2>Everything your front desk handles,<br>automated</h2>
+    <p class="section-sub">Two channels, one seamless patient experience.</p>
+    <div class="channel-grid">
+      <div class="channel-card whatsapp">
+        <div class="channel-icon">&#128172;</div>
+        <h3>WhatsApp Agent</h3>
+        <p class="sub">Handles all patient messaging — day or night</p>
+        <ul class="feature-list">
+          <li>Conversational appointment booking with slot confirmation</li>
+          <li>Handles multiple questions in a single thread without losing context</li>
+          <li>Sends automated reminders and re-engagement messages</li>
+          <li>Flags urgent cases instantly to your staff dashboard</li>
+          <li>Builds structured patient profiles with treatment interest and timing preferences</li>
+          <li>Critical alert emails dispatched to management for emergencies</li>
+        </ul>
+      </div>
+      <div class="channel-card voice">
+        <div class="channel-icon">&#128222;</div>
+        <h3>Voice Agent</h3>
+        <p class="sub">Answers every call — even after hours</p>
+        <ul class="feature-list">
+          <li>Books, reschedules, and cancels appointments over natural conversation</li>
+          <li>Answers questions on clinic hours, location, insurance, and payments</li>
+          <li>Live call transfer to staff when a patient needs urgent attention</li>
+          <li>Sends a WhatsApp summary to the caller right after the call ends</li>
+          <li>Captures caller name, treatment interest, and preferred slots</li>
+          <li>Email alerts to management for every critical call exception</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pricing-bg" id="pricing">
+  <div class="container">
+    <div class="section-label">Pricing</div>
+    <h2>Simple, transparent pricing</h2>
+    <p class="section-sub">Monthly subscription. No setup fees. No long-term contracts.</p>
+    <div class="pricing-grid">
+      <div class="plan">
+        <div class="plan-name">WhatsApp Only</div>
+        <div class="plan-price">$200</div>
+        <div class="plan-aed">AED 734 per month</div>
+        <div class="plan-cycle">billed monthly</div>
+        <ul class="plan-features">
+          <li>WhatsApp bot for your clinic</li>
+          <li>Appointment booking &amp; confirmations</li>
+          <li>Automated patient reminders</li>
+          <li>Multi-question resolution in one thread</li>
+          <li>Urgent case flagging to staff</li>
+          <li>Emergency email alerts to management</li>
+          <li>Structured patient profile logging</li>
+        </ul>
+        <p class="plan-note">Get in touch via email to get started.</p>
+      </div>
+      <div class="plan featured">
+        <div class="plan-name">WhatsApp + Voice &mdash; Best Value</div>
+        <div class="plan-price">$325</div>
+        <div class="plan-aed">AED 1,193 per month</div>
+        <div class="plan-cycle">billed monthly</div>
+        <ul class="plan-features">
+          <li>Everything in WhatsApp plan</li>
+          <li>AI voice agent for inbound calls</li>
+          <li>After-hours call handling</li>
+          <li>Live call patching to staff</li>
+          <li>Post-call WhatsApp summary to patient</li>
+          <li>Full analytics and call logging</li>
+          <li>Priority escalation dashboard</li>
+        </ul>
+        <p class="plan-note">Get in touch via email to get started.</p>
+      </div>
+      <div class="plan">
+        <div class="plan-name">Voice Only</div>
+        <div class="plan-price">$250</div>
+        <div class="plan-aed">AED 918 per month</div>
+        <div class="plan-cycle">billed monthly</div>
+        <ul class="plan-features">
+          <li>AI voice agent for inbound calls</li>
+          <li>After-hours and busy-hour call handling</li>
+          <li>Appointment booking over voice</li>
+          <li>Live call transfer to staff</li>
+          <li>Post-call WhatsApp summary to patient</li>
+          <li>Full call logs and analytics</li>
+          <li>Emergency email alerts to management</li>
+        </ul>
+        <p class="plan-note">Get in touch via email to get started.</p>
+      </div>
+      <div class="plan custom">
+        <div class="plan-name">Custom Configuration</div>
+        <div class="plan-price" style="font-size:1.6rem; font-family:DM Serif Display,serif;">Talk to us</div>
+        <div class="plan-aed">&nbsp;</div>
+        <div class="plan-cycle">pricing tailored to your clinic</div>
+        <ul class="plan-features">
+          <li>Multi-location clinic support</li>
+          <li>Custom integrations with your existing systems</li>
+          <li>Tailored bot responses for your specific workflows</li>
+          <li>Flexible channel combinations</li>
+          <li>Volume-based pricing available</li>
+          <li>Dedicated onboarding and support</li>
+        </ul>
+        <p class="plan-note">Email us with your requirements and we will put together an accurate quote.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-label">Policies</div>
+    <h2>Clear terms, no surprises</h2>
+    <p class="section-sub">We believe in straightforward agreements.</p>
+    <div class="policy-grid">
+      <div class="policy-card">
+        <h3>Cancellation Policy</h3>
+        <p>You may cancel your plan at any time by emailing us. Your service continues until the end of the paid period. There are no cancellation fees or long-term contracts required.</p>
+      </div>
+      <div class="policy-card">
+        <h3>Data &amp; Privacy</h3>
+        <p>All patient conversation data is encrypted and stored securely. We do not sell or share your clinic's data with third parties. Data is retained only as long as necessary for service delivery and deleted upon account closure on request.</p>
+      </div>
+      <div class="policy-card">
+        <h3>Service Availability</h3>
+        <p>We target 99.5% uptime for all bots. In the event of planned maintenance, we notify clients 48 hours in advance. Emergency downtime support is available via email for all subscribers.</p>
+      </div>
+      <div class="policy-card">
+        <h3>Payment</h3>
+        <p>Subscriptions are billed monthly. Payment details are shared privately upon onboarding. We accept international payments from clinics in the UAE, USA, UK, Canada, and Australia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-bg" id="contact">
+  <div class="container">
+    <div class="contact-wrap">
+      <div class="contact-info">
+        <div class="section-label" style="color:#6fcf97">Contact</div>
+        <h2>Interested in automating your clinic?</h2>
+        <p>Send us an email describing your clinic and which plan you are interested in. We will get back to you within 24 hours and walk you through how the system works for your specific setup — before any payment is required.</p>
+        <div class="contact-detail">
+          <div class="contact-item">&#128231; vishwa@businessautomater.site</div>
+          <div class="contact-item">&#127757; Serving clinics in UAE &nbsp;&#183;&nbsp; USA &nbsp;&#183;&nbsp; UK &nbsp;&#183;&nbsp; Canada &nbsp;&#183;&nbsp; Australia</div>
+        </div>
+      </div>
+      <div class="contact-box">
+        <div class="contact-row">
+          <div class="contact-row-label">Email us at</div>
+          <div class="contact-row-val">vishwa@businessautomater.site</div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-row-label">We respond within</div>
+          <div class="contact-row-val">24 hours</div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-row-label">What to include</div>
+          <div class="contact-row-val" style="font-size:0.85rem; line-height:1.6;">Your clinic name, location, and which plan or configuration you are interested in.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>&#169; 2026 BusinessAutomater &nbsp;&#183;&nbsp; AI Automation for Dental Clinics &nbsp;&#183;&nbsp; All rights reserved.</p>
+</footer>
+
+</body>
+</html>
